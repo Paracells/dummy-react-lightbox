@@ -1,0 +1,14 @@
+.App {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+.btn {
+    transform: scale(2);
+    border: none;
+    outline: none;
+    background-color: #eee;
+    border-radius: 30px;
+    padding: 8px 12px;
+}

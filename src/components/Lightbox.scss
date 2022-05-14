@@ -1,0 +1,125 @@
+.image {
+    background: transparent;
+    border: 0;
+    position: relative;
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    outline: none;
+    user-select: none;
+    opacity: 1;
+    margin: auto;
+    z-index: 9997;
+    box-shadow: none;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    width: 100vw;
+    height: 100vh;
+}
+
+.image-wrapper {
+    width: 100%;
+    height: 90%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    border: 0;
+    user-select: none;
+}
+
+.lightbox {
+    background-color: rgba(30, 30, 30, 0.9);
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+}
+
+
+.button {
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    transition: color 0.3s ease;
+    background-color: rgba(30, 30, 36, 0.8);
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    visibility: inherit;
+    z-index: 9998;
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    top: calc(50% - 50px);
+    right: 5px;
+    will-change: right;
+
+    &.btncontrol {
+        position: initial;
+    }
+}
+
+.control {
+    position: absolute;
+    top: calc(env(safe-area-inset-top) + 5px);
+    right: calc(env(safe-area-inset-right) + 5px);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    transition: 0.3s ease;
+    will-change: right;
+}
+
+.button {
+    div {
+        height: 40px;
+        width: 40px;
+        padding: 10px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+
+        &:hover {
+            svg {
+                path {
+                    fill: rgba(255, 255, 255, 1);
+                }
+            }
+        }
+
+        svg {
+            display: block;
+            height: 100%;
+            width: 100%;
+            overflow: visible;
+            position: relative;
+
+            path {
+                transition: fill 0.3s ease;
+                fill: rgba(255, 255, 255, 0.8);
+            }
+        }
+    }
+}
+
+.left {
+    left: 5px;
+}
