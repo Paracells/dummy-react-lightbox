@@ -1,4 +1,4 @@
-import React, { KeyboardEvent, MouseEvent, useEffect, useState } from 'react';
+import React, { MouseEvent, useCallback, useEffect, useState } from 'react';
 
 import styles from './Lightbox.module.scss';
 
@@ -12,6 +12,7 @@ function Lightbox({ images, onClose }: LightboxProps) {
   const [image, setImage] = useState(images[0]);
 
   useEffect(() => {
+    window.addEventListener('keydown', handleKeyboard);
     const overflow = document.body.style.overflow;
     const marginRight = document.body.style.marginRight;
 
@@ -19,6 +20,7 @@ function Lightbox({ images, onClose }: LightboxProps) {
     document.body.style.marginRight = '0';
 
     return () => {
+      window.addEventListener('keydown', handleKeyboard);
       document.body.style.overflow = overflow;
       document.body.style.marginRight = marginRight;
     };
@@ -48,12 +50,14 @@ function Lightbox({ images, onClose }: LightboxProps) {
     e.stopPropagation();
     onClose();
   };
-
-  const handleKeyboard = (e: KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === 'Escape') {
-      onClose();
-    }
-  };
+  const handleKeyboard = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    },
+    [onClose],
+  );
   return (
     <div
       className={styles.lightbox}
