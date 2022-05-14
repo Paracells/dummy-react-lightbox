@@ -58,6 +58,10 @@ function Lightbox({ images, onClose }: LightboxProps) {
     },
     [onClose],
   );
+  const setFromThumbnail = (e: MouseEvent, i: number) => {
+    e.stopPropagation();
+    setIndex(i);
+  };
   return (
     <div
       className={styles.lightbox}
@@ -95,6 +99,17 @@ function Lightbox({ images, onClose }: LightboxProps) {
             </svg>
           </div>
         </button>
+        <div className={styles.wrapper}>
+          {images.map((image, i) => (
+            <img
+              onClick={(e: MouseEvent) => setFromThumbnail(e, i)}
+              className={styles.thumbnail}
+              src={image}
+              alt=""
+              key={i}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
