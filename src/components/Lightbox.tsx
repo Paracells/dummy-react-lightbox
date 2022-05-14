@@ -51,7 +51,7 @@ function Lightbox({ images, onClose }: LightboxProps) {
     onClose();
   };
   const handleKeyboard = useCallback(
-    (e: KeyboardEvent) => {
+    (e: React.KeyboardEvent | KeyboardEvent) => {
       if (e.key === 'Escape') {
         onClose();
       }
@@ -64,7 +64,7 @@ function Lightbox({ images, onClose }: LightboxProps) {
       tabIndex={-1}
       role="button"
       onClick={closeLightbox}
-      onKeyDown={handleKeyboard}
+      onKeyDown={(e) => handleKeyboard(e)}
     >
       <div>
         <div className={styles.control}>
